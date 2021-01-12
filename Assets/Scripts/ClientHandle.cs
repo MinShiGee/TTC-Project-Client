@@ -42,4 +42,9 @@ public class ClientHandle : MonoBehaviour
 
         GameManager.players[_id].transform.rotation = _rotation;
     }
+
+    public static void RoomList(Packet _packet)
+    {
+        Debug.Log("asdasd");
+    }
 }
