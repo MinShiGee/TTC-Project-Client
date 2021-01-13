@@ -45,6 +45,16 @@ public class ClientHandle : MonoBehaviour
 
     public static void RoomList(Packet _packet)
     {
-        Debug.Log("asdasd");
+        int _length = _packet.ReadInt();
+        for(int i = 1; i <= _length; i++)
+        {
+            int _id = _packet.ReadInt();
+            string _roomName = _packet.ReadString();
+            string _ownerName = _packet.ReadString();
+            int _curPlayers = _packet.ReadInt();
+            int _maxPlayers = _packet.ReadInt();
+
+            //Debug.Log($"id: {_id}, roomName: {_roomName}, ownerName: {_ownerName}, curPlayers: {_curPlayers}, maxPlayers: {_maxPlayers}");
+        }
     }
 }
