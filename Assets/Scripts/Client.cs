@@ -5,6 +5,14 @@ using System.Net;
 using System.Net.Sockets;
 using System;
 
+public enum ClientStatus
+{
+    Lobby = 0,
+    Room,
+    Shop,
+    InGame
+}
+
 public class Client : MonoBehaviour
 {
     public static Client instance;
@@ -20,11 +28,14 @@ public class Client : MonoBehaviour
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
 
+    public static ClientStatus clientStatus = ClientStatus.Lobby;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this);
         }
         else if (instance != this)
         {

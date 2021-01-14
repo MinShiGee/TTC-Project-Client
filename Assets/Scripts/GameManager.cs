@@ -2,18 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ClientStatus
-{
-    Lobby = 0,
-    Room,
-    Shop,
-    InGame
-}
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static ClientStatus clientStatus = ClientStatus.Lobby;
 
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
 
