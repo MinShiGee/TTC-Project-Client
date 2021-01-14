@@ -54,7 +54,6 @@ public class ClientHandle : MonoBehaviour
             int _curPlayers = _packet.ReadInt();
             int _maxPlayers = _packet.ReadInt();
 
-            //Debug.Log($"id: {_id}, roomName: {_roomName}, ownerName: {_ownerName}, curPlayers: {_curPlayers}, maxPlayers: {_maxPlayers}");
         }
     }
 }
