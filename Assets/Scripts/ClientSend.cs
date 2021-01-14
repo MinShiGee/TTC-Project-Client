@@ -42,5 +42,16 @@ public class ClientSend : MonoBehaviour
             SendUDPData(_packet);
         }
     }
+
+    public static void CreateRoom()
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.roomCreate))
+        {
+            _packet.Write("Empty Name String");
+            SendTCPData(_packet);
+        }
+
+        return;
+    }
     #endregion
 }
