@@ -15,6 +15,8 @@ public class ClientHandle : MonoBehaviour
         ClientSend.WelcomeReceived();
 
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+
+        ClientSend.CreateRoom();
     }
 
     public static void SpawnPlayer(Packet _packet)
@@ -53,7 +55,6 @@ public class ClientHandle : MonoBehaviour
             string _ownerName = _packet.ReadString();
             int _curPlayers = _packet.ReadInt();
             int _maxPlayers = _packet.ReadInt();
-
         }
     }
 }
