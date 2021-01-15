@@ -57,4 +57,12 @@ public class ClientHandle : MonoBehaviour
             int _maxPlayers = _packet.ReadInt();
         }
     }
+
+    public static void RoomCreateStatus(Packet _packet)
+    {
+        bool _status = _packet.ReadBool();
+
+        Debug.Log($"RoomCreateStatus = {_status}.");
+        return;
+    }
 }

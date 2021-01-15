@@ -289,7 +289,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
             { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
-            { (int)ServerPackets.roomList, ClientHandle.RoomList}
+            { (int)ServerPackets.roomList, ClientHandle.RoomList},
+            { (int)ServerPackets.roomCreateStatus, ClientHandle.RoomCreateStatus}
         };
         Debug.Log("Initialized packets.");
     }
