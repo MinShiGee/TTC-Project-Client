@@ -48,6 +48,9 @@ public class ClientHandle : MonoBehaviour
     public static void RoomList(Packet _packet)
     {
         int _length = _packet.ReadInt();
+
+        List<RoomInfoDto> _tmoRoomList = new List<RoomInfoDto>();
+
         for(int i = 1; i <= _length; i++)
         {
             int _id = _packet.ReadInt();
@@ -55,7 +58,11 @@ public class ClientHandle : MonoBehaviour
             string _ownerName = _packet.ReadString();
             int _curPlayers = _packet.ReadInt();
             int _maxPlayers = _packet.ReadInt();
+
+            _tmoRoomList.Add(new RoomInfoDto(_id, _roomName, _ownerName, _curPlayers, _maxPlayers));
         }
+
+        UIManager.instance.UpdateRoomList(_tmoRoomList);
     }
 
     public static void RoomCreateStatus(Packet _packet)

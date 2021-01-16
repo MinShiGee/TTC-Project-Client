@@ -7,8 +7,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public GameObject startMenu;
-    public InputField usernameField;
+    private Dictionary<int, RoomInfoDto> roomList = new Dictionary<int, RoomInfoDto>();
+
+    [SerializeField]
+    private Transform roomListTransform = default;
+    [SerializeField]
+    private GameObject roomInfoPrefeb = default;
 
     private void Awake()
     {
@@ -23,11 +27,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ConnectToServer()
+    public void UpdateRoomList(List<RoomInfoDto> _roomList)
     {
-        startMenu.SetActive(false);
-        usernameField.interactable = false;
-        Client.instance.ConnectToServer();
+        Debug.Log("CreateRoom");
+
+        foreach(RoomInfoDto item in _roomList)
+        {
+
+        }
 
     }
+
+
 }
