@@ -14,6 +14,15 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField]
     private GameObject roomInfoPrefeb = default;
 
+    [SerializeField]
+    private Transform lobbyChatListTransform = default;
+    [SerializeField]
+    private GameObject lobbyChatPrefeb = default;
+
+    [SerializeField]
+    private InputField lobbyChatInputField = default;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -27,6 +36,7 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
+    #region RoomList
     public void UpdateRoomList(int _maxRooms, List<RoomInfoDto> _roomList)
     {
         if(roomList.Count != _maxRooms)
@@ -109,5 +119,29 @@ public class LobbyUIManager : MonoBehaviour
         return;
     }
 
+    #endregion
+
+    #region LobbyChatManager
+
+    public void SendMessage()
+    {
+        string _msg = lobbyChatInputField.text;
+        lobbyChatInputField.text = "";
+
+        ClientSend.LobbyChatMessage(_msg);
+        return;
+    }
+
+    public void ReceiveMessage(string _msg)
+    {
+        Instantiate(lobbyChatPrefeb, lobbyChatListTransform).GetComponent<LobbyChatMessage>().message.text = _msg;
+    }
+
+    #endregion
+
+    public void CreateRoom()
+    {
+        ClientSend.CreateRoom("my room", false, "");
+    }
 
 }

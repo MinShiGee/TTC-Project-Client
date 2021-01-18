@@ -47,11 +47,25 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet _packet = new Packet((int)ClientPackets.roomCreate))
         {
-            _packet.Write("Empty Name String");
+            _packet.Write(_roomName);
+            _packet.Write(_isPrivate);
+            _packet.Write(_passWord);
             SendTCPData(_packet);
         }
 
         return;
     }
+
+    public static void LobbyChatMessage(string _msg)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.lobbyChatMessage))
+        {
+            _packet.Write(_msg);
+            SendTCPData(_packet);
+        }
+
+        return;
+    }
+
     #endregion
 }

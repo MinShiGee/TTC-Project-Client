@@ -15,8 +15,6 @@ public class ClientHandle : MonoBehaviour
         ClientSend.WelcomeReceived();
 
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
-
-        ClientSend.CreateRoom("EmptyRoom", false, null);
     }
 
     public static void SpawnPlayer(Packet _packet)
@@ -63,6 +61,13 @@ public class ClientHandle : MonoBehaviour
         }
 
         LobbyUIManager.instance.UpdateRoomList(_maxRooms , _tmoRoomList);
+    }
+
+    public static void LobbyChatMessage(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+        LobbyUIManager.instance.ReceiveMessage(_msg);
+        return;
     }
 
     public static void RoomCreateStatus(Packet _packet)

@@ -12,7 +12,8 @@ public enum ServerPackets
     playerPosition,
     playerRotation,
     roomList,
-    roomCreateStatus
+    roomCreateStatus,
+    lobbyChatMessage
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -20,7 +21,9 @@ public enum ClientPackets
 {
     welcomeReceived = 1,
     playerMovement,
-    roomCreate
+    roomCreate,
+    lobbyChatMessage,
+    roomStartGame
 }
 
 public class Packet : IDisposable
