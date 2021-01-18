@@ -43,7 +43,7 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void CreateRoom()
+    public static void CreateRoom(string _roomName, bool _isPrivate, string _passWord)
     {
         using (Packet _packet = new Packet((int)ClientPackets.roomCreate))
         {

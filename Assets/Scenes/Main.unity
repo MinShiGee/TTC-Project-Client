@@ -918,7 +918,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomListTransform: {fileID: 1392395282}
-  roomInfoPrefeb: {fileID: 0}
+  roomInfoPrefeb: {fileID: 2902108218006707050, guid: 10fe8939c04ad624794d9fcd34b446ef,
+    type: 3}
 --- !u!1 &1567426824
 GameObject:
   m_ObjectHideFlags: 0
