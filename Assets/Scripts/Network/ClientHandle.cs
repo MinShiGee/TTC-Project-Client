@@ -15,6 +15,7 @@ public class ClientHandle : MonoBehaviour
         ClientSend.WelcomeReceived();
 
         Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+        LobbyUIManager.instance.ShowGameLobby();
     }
 
     public static void SpawnPlayer(Packet _packet)
