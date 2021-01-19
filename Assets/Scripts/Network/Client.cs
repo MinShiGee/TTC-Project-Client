@@ -48,8 +48,6 @@ public class Client : MonoBehaviour
     {
         tcp = new TCP();
         udp = new UDP();
-
-        ConnectToServer();
     }
 
     private void OnApplicationQuit()

@@ -7,7 +7,14 @@ public class LobbyUIManager : MonoBehaviour
 {
     public static LobbyUIManager instance;
 
-    private Dictionary<int, GameObject> roomList = new Dictionary<int, GameObject>(); 
+    private Dictionary<int, GameObject> roomList = new Dictionary<int, GameObject>();
+
+    [SerializeField]
+    private GameObject mainLobbyUI = default;
+    [SerializeField]
+    private GameObject gameLobbyUI = default;
+    [SerializeField]
+    private GameObject roomLobbyUI = default;
 
     [SerializeField]
     private Transform roomListTransform = default;
@@ -40,6 +47,34 @@ public class LobbyUIManager : MonoBehaviour
             Destroy(this);
         }
     }
+
+    #region Connect Server
+
+    public void ConnectToServer()
+    {
+        Client.instance.ConnectToServer();
+    }
+
+    public void ShowMainLobby()
+    {
+        mainLobbyUI.SetActive(true);
+        gameLobbyUI.SetActive(false);
+        roomLobbyUI.SetActive(false);
+    }
+    public void ShowGameLobby()
+    {
+        mainLobbyUI.SetActive(false);
+        gameLobbyUI.SetActive(true);
+        roomLobbyUI.SetActive(false);
+    }
+    public void ShowRoomLobby()
+    {
+        mainLobbyUI.SetActive(false);
+        gameLobbyUI.SetActive(false);
+        roomLobbyUI.SetActive(true);
+    }
+
+    #endregion
 
     #region RoomList
     public void UpdateRoomList(int _maxRooms, List<RoomInfoDto> _roomList)
