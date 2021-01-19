@@ -70,10 +70,15 @@ public class ClientHandle : MonoBehaviour
         return;
     }
 
+    public static void LobbyServerMessage(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+        LobbyUIManager.instance.LobbyServerMessage(_msg);
+        return;
+    }
     public static void RoomCreateStatus(Packet _packet)
     {
         bool _status = _packet.ReadBool();
-
         Debug.Log($"RoomCreateStatus = {_status}.");
         return;
     }

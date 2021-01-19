@@ -22,6 +22,11 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField]
     private InputField lobbyChatInputField = default;
 
+    [SerializeField]
+    private Text lobbyServerText = default;
+
+    [SerializeField]
+    private GameObject createRoomPanel = default;
 
     private void Awake()
     {
@@ -139,9 +144,15 @@ public class LobbyUIManager : MonoBehaviour
 
     #endregion
 
-    public void CreateRoom()
+    public void LobbyServerMessage(string _msg)
     {
-        ClientSend.CreateRoom("my room", false, "");
+        lobbyServerText.text = _msg;
+        return;
+    }
+
+    public void ShowCreateRoomPanel()
+    {
+        createRoomPanel.SetActive(true);
     }
 
 }
