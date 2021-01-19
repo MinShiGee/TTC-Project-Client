@@ -43,13 +43,13 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void CreateRoom(string _roomName, bool _isPrivate, string _passWord)
+    public static void CreateRoom(CreateRoomDto _dto)
     {
         using (Packet _packet = new Packet((int)ClientPackets.roomCreate))
         {
-            _packet.Write(_roomName);
-            _packet.Write(_isPrivate);
-            _packet.Write(_passWord);
+            _packet.Write(_dto.roomName);
+            _packet.Write(_dto.isPrivate);
+            _packet.Write(_dto.password);
             SendTCPData(_packet);
         }
 

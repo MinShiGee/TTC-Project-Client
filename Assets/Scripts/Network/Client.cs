@@ -293,6 +293,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
             { (int)ServerPackets.roomList, ClientHandle.RoomList},
             { (int)ServerPackets.lobbyChatMessage, ClientHandle.LobbyChatMessage},
+            { (int)ServerPackets.lobbyServerMessage, ClientHandle.LobbyServerMessage},
             { (int)ServerPackets.roomCreateStatus, ClientHandle.RoomCreateStatus}
         };
         Debug.Log("Initialized packets.");
