@@ -67,7 +67,7 @@ public class ClientHandle : MonoBehaviour
     public static void LobbyChatMessage(Packet _packet)
     {
         string _msg = _packet.ReadString();
-        LobbyUIManager.instance.ReceiveMessage(_msg);
+        LobbyUIManager.instance.ReceiveLobbyMessage(_msg);
         return;
     }
 
@@ -81,7 +81,7 @@ public class ClientHandle : MonoBehaviour
     public static void RoomChatMessage(Packet _packet)
     {
         string _msg = _packet.ReadString();
-        LobbyUIManager.instance.RoomChatUpdate(_msg);
+        LobbyUIManager.instance.ReceiveRoomMessage(_msg);
         return;
     }
 

@@ -52,7 +52,16 @@ public class ClientSend : MonoBehaviour
             _packet.Write(_dto.password);
             SendTCPData(_packet);
         }
+        return;
+    }
 
+    public static void JoinRoom(int _roomId)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.roomJoin))
+        {
+            _packet.Write(_roomId);
+            SendTCPData(_packet);
+        }
         return;
     }
 
@@ -75,5 +84,8 @@ public class ClientSend : MonoBehaviour
             SendTCPData(_packet);
         }
     }
+
     #endregion
+
+
 }

@@ -12,7 +12,7 @@ public enum ServerPackets
     playerPosition,
     playerRotation,
     roomList,
-    roomCreateStatus,
+    roomJoinStatus,
     lobbyChatMessage,
     lobbyServerMessage,
     roomChatMessage
@@ -24,6 +24,7 @@ public enum ClientPackets
     welcomeReceived = 1,
     playerMovement,
     roomCreate,
+    roomJoin,
     lobbyChatMessage,
     roomChatMessage,
     roomStartGame

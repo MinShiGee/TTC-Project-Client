@@ -15,6 +15,10 @@ public class LobbyUIManager : MonoBehaviour
     private GameObject gameLobbyUI = default;
     [SerializeField]
     private GameObject roomLobbyUI = default;
+
+    [SerializeField]
+    private GameObject ChatPrefeb = default;
+
     [Header("GameLobby")]
     [SerializeField]
     private Transform roomListTransform = default;
@@ -23,8 +27,6 @@ public class LobbyUIManager : MonoBehaviour
 
     [SerializeField]
     private Transform lobbyChatListTransform = default;
-    [SerializeField]
-    private GameObject lobbyChatPrefeb = default;
 
     [SerializeField]
     private InputField lobbyChatInputField = default;
@@ -40,6 +42,8 @@ public class LobbyUIManager : MonoBehaviour
     private InputField roomChatInputField = default;
     [SerializeField]
     private Transform roomPlayerPanel = default;
+    [SerializeField]
+    private Transform roomChatListTransform = default;
 
     private void Awake()
     {
@@ -169,7 +173,7 @@ public class LobbyUIManager : MonoBehaviour
 
     #region LobbyChatManager
 
-    public void SendMessage()
+    public void SendLobbyMessage()
     {
         string _msg = lobbyChatInputField.text;
         lobbyChatInputField.text = "";
@@ -178,16 +182,16 @@ public class LobbyUIManager : MonoBehaviour
         return;
     }
 
-    public void ReceiveMessage(string _msg)
+    public void ReceiveLobbyMessage(string _msg)
     {
-        Instantiate(lobbyChatPrefeb, lobbyChatListTransform).GetComponent<LobbyChatMessage>().message.text = _msg;
+        Instantiate(ChatPrefeb, lobbyChatListTransform).GetComponent<ChatMessage>().message.text = _msg;
     }
 
     #endregion
 
     #region RoomChatManager
 
-    public void RoomChatSend()
+    public void SendRoomMessage()
     {
         string _msg = roomChatInputField.text;
         roomChatInputField.text = string.Empty;
@@ -195,9 +199,9 @@ public class LobbyUIManager : MonoBehaviour
         return;
     }
 
-    public void RoomChatUpdate(string _msg)
+    public void ReceiveRoomMessage(string _msg)
     {
-        Debug.Log(_msg);
+        Instantiate(ChatPrefeb, roomChatListTransform).GetComponent<ChatMessage>().message.text = _msg;
     }
 
     #endregion

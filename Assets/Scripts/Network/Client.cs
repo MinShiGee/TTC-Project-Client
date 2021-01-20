@@ -293,7 +293,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.lobbyChatMessage, ClientHandle.LobbyChatMessage},
             { (int)ServerPackets.lobbyServerMessage, ClientHandle.LobbyServerMessage},
             { (int)ServerPackets.roomChatMessage, ClientHandle.RoomChatMessage},
-            { (int)ServerPackets.roomCreateStatus, ClientHandle.RoomCreateStatus}
+            { (int)ServerPackets.roomJoinStatus, ClientHandle.RoomCreateStatus}
         };
         Debug.Log("Initialized packets.");
     }

@@ -1295,7 +1295,7 @@ GameObject:
   - component: {fileID: 342113218}
   - component: {fileID: 342113217}
   m_Layer: 5
-  m_Name: RoomChatList
+  m_Name: RoomChatScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3509,7 +3509,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1561857069}
-        m_MethodName: SendMessage
+        m_MethodName: SendLobbyMessage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4655,7 +4655,7 @@ GameObject:
   - component: {fileID: 1103216699}
   - component: {fileID: 1103216698}
   m_Layer: 5
-  m_Name: ChatScrollView
+  m_Name: LobbyChatScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5110,7 +5110,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1561857069}
-        m_MethodName: RoomChatSend
+        m_MethodName: SendRoomMessage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5977,6 +5977,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1509672107}
+  - component: {fileID: 1509672109}
+  - component: {fileID: 1509672108}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -6003,6 +6005,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.0037534088}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1509672108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509672106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 3
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+--- !u!114 &1509672109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509672106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!1 &1510987993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6491,17 +6532,18 @@ MonoBehaviour:
   mainLobbyUI: {fileID: 1724624290}
   gameLobbyUI: {fileID: 812941495}
   roomLobbyUI: {fileID: 620704642}
+  ChatPrefeb: {fileID: 3001513770163311986, guid: a5d073b8da84fb042881c04eb656aae2,
+    type: 3}
   roomListTransform: {fileID: 1392395282}
   roomInfoPrefeb: {fileID: 2902108218006707050, guid: 10fe8939c04ad624794d9fcd34b446ef,
     type: 3}
   lobbyChatListTransform: {fileID: 662495015}
-  lobbyChatPrefeb: {fileID: 3001513770163311986, guid: a5d073b8da84fb042881c04eb656aae2,
-    type: 3}
   lobbyChatInputField: {fileID: 1895505279}
   lobbyServerText: {fileID: 1488270571}
   createRoomPanel: {fileID: 865428031}
   roomChatInputField: {fileID: 288336302}
   roomPlayerPanel: {fileID: 1332351487}
+  roomChatListTransform: {fileID: 1509672107}
 --- !u!1 &1567426824
 GameObject:
   m_ObjectHideFlags: 0
