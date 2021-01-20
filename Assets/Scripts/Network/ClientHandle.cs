@@ -77,10 +77,24 @@ public class ClientHandle : MonoBehaviour
         LobbyUIManager.instance.LobbyServerMessage(_msg);
         return;
     }
+
+    public static void RoomChatMessage(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+        LobbyUIManager.instance.RoomChatUpdate(_msg);
+        return;
+    }
+
     public static void RoomCreateStatus(Packet _packet)
     {
         bool _status = _packet.ReadBool();
         Debug.Log($"RoomCreateStatus = {_status}.");
+
+        if (_status)
+        {
+            LobbyUIManager.instance.ShowRoomLobby();
+        }
+
         return;
     }
 }

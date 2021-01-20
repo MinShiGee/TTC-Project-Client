@@ -67,5 +67,13 @@ public class ClientSend : MonoBehaviour
         return;
     }
 
+    public static void RoomChatMessage(string _msg)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.roomChatMessage))
+        {
+            _packet.Write(_msg);
+            SendTCPData(_packet);
+        }
+    }
     #endregion
 }

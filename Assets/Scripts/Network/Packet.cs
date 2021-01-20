@@ -14,7 +14,8 @@ public enum ServerPackets
     roomList,
     roomCreateStatus,
     lobbyChatMessage,
-    lobbyServerMessage
+    lobbyServerMessage,
+    roomChatMessage
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -24,6 +25,7 @@ public enum ClientPackets
     playerMovement,
     roomCreate,
     lobbyChatMessage,
+    roomChatMessage,
     roomStartGame
 }
 
