@@ -206,6 +206,7 @@ public class LobbyUIManager : MonoBehaviour
 
     #endregion
 
+    #region ServerMessageManager
     public void LobbyServerMessage(string _msg)
     {
         lobbyServerText.text = _msg;
@@ -216,5 +217,16 @@ public class LobbyUIManager : MonoBehaviour
     {
         createRoomPanel.SetActive(true);
     }
+    #endregion
+
+    #region JoinFastRoom
+
+    public void JoinFastRoom()
+    {
+        ClientSend.JoinRoom(0);
+        return;
+    }
+
+    #endregion
 
 }
