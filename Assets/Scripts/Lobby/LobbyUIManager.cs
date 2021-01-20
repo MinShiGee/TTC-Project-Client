@@ -15,7 +15,7 @@ public class LobbyUIManager : MonoBehaviour
     private GameObject gameLobbyUI = default;
     [SerializeField]
     private GameObject roomLobbyUI = default;
-
+    [Header("GameLobby")]
     [SerializeField]
     private Transform roomListTransform = default;
     [SerializeField]
@@ -34,6 +34,12 @@ public class LobbyUIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject createRoomPanel = default;
+
+    [Header("RoomLobby")]
+    [SerializeField]
+    private InputField roomChatInputField = default;
+    [SerializeField]
+    private Transform roomPlayerPanel = default;
 
     private void Awake()
     {
@@ -175,6 +181,23 @@ public class LobbyUIManager : MonoBehaviour
     public void ReceiveMessage(string _msg)
     {
         Instantiate(lobbyChatPrefeb, lobbyChatListTransform).GetComponent<LobbyChatMessage>().message.text = _msg;
+    }
+
+    #endregion
+
+    #region RoomChatManager
+
+    public void RoomChatSend()
+    {
+        string _msg = roomChatInputField.text;
+        roomChatInputField.text = string.Empty;
+        ClientSend.RoomChatMessage(_msg);
+        return;
+    }
+
+    public void RoomChatUpdate(string _msg)
+    {
+        Debug.Log(_msg);
     }
 
     #endregion
