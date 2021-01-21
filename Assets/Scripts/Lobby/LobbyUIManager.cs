@@ -70,18 +70,25 @@ public class LobbyUIManager : MonoBehaviour
         mainLobbyUI.SetActive(true);
         gameLobbyUI.SetActive(false);
         roomLobbyUI.SetActive(false);
+        Client.instance.Disconnect();
     }
     public void ShowGameLobby()
     {
         mainLobbyUI.SetActive(false);
         gameLobbyUI.SetActive(true);
         roomLobbyUI.SetActive(false);
+        ClientSend.JoinRoom(-1);
     }
     public void ShowRoomLobby()
     {
         mainLobbyUI.SetActive(false);
         gameLobbyUI.SetActive(false);
         roomLobbyUI.SetActive(true);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     #endregion
@@ -206,6 +213,7 @@ public class LobbyUIManager : MonoBehaviour
 
     #endregion
 
+    #region ServerMessageManager
     public void LobbyServerMessage(string _msg)
     {
         lobbyServerText.text = _msg;
@@ -216,5 +224,16 @@ public class LobbyUIManager : MonoBehaviour
     {
         createRoomPanel.SetActive(true);
     }
+    #endregion
+
+    #region JoinFastRoom
+
+    public void JoinFastRoom()
+    {
+        ClientSend.JoinRoom(0);
+        return;
+    }
+
+    #endregion
 
 }
