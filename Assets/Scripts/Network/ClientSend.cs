@@ -55,11 +55,13 @@ public class ClientSend : MonoBehaviour
         return;
     }
 
-    public static void JoinRoom(int _roomId)
+    public static void JoinRoom(int _roomId, bool _isPirvate, string _password)
     {
         using (Packet _packet = new Packet((int)ClientPackets.roomJoin))
         {
             _packet.Write(_roomId);
+            _packet.Write(_isPirvate);
+            _packet.Write(_password);
             SendTCPData(_packet);
         }
         return;

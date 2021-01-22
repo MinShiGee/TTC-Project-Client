@@ -11,6 +11,9 @@ public class RoomInfo : MonoBehaviour, IPointerDownHandler
     public Text roomPlayersText;
     public Text roomOwnerText;
 
+    public Text isPrivateText;
+    public bool isPrivate;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.clickCount >= 2)
@@ -18,7 +21,14 @@ public class RoomInfo : MonoBehaviour, IPointerDownHandler
             eventData.clickCount = 0;
             Debug.Log($"Joining RoomId {roomId}!");
 
-            ClientSend.JoinRoom(roomId);
+            if (isPrivate)
+            {
+                LobbyUIManager.instance.ShowPrivateRoomJoinPanel(true, roomId);
+                return;
+            }
+
+            ClientSend.JoinRoom(roomId, isPrivate, "Hello!");
+            return;
         }
     }
 
