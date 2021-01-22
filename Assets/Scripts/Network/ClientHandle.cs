@@ -57,8 +57,9 @@ public class ClientHandle : MonoBehaviour
             string _ownerName = _packet.ReadString();
             int _curPlayers = _packet.ReadInt();
             int _maxPlayers = _packet.ReadInt();
+            bool _isPrivate = _packet.ReadBool();
 
-            _tmoRoomList.Add(new RoomInfoDto(_id, _roomName, _ownerName, _curPlayers, _maxPlayers));
+            _tmoRoomList.Add(new RoomInfoDto(_id, _roomName, _ownerName, _curPlayers, _maxPlayers, _isPrivate));
         }
 
         LobbyUIManager.instance.UpdateRoomList(_maxRooms , _tmoRoomList);

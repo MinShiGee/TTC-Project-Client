@@ -37,6 +37,9 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField]
     private GameObject createRoomPanel = default;
 
+    [SerializeField]
+    private PrivateRoomJoin privateRoomJoin = default;
+
     [Header("RoomLobby")]
     [SerializeField]
     private InputField roomChatInputField = default;
@@ -70,20 +73,29 @@ public class LobbyUIManager : MonoBehaviour
         mainLobbyUI.SetActive(true);
         gameLobbyUI.SetActive(false);
         roomLobbyUI.SetActive(false);
-        Client.instance.Disconnect();
     }
     public void ShowGameLobby()
     {
         mainLobbyUI.SetActive(false);
         gameLobbyUI.SetActive(true);
         roomLobbyUI.SetActive(false);
-        ClientSend.JoinRoom(-1);
     }
     public void ShowRoomLobby()
     {
         mainLobbyUI.SetActive(false);
         gameLobbyUI.SetActive(false);
         roomLobbyUI.SetActive(true);
+    }
+    public void ExitToGameLobby()
+    {
+        ClientSend.JoinRoom(-1, false, string.Empty);
+        ShowGameLobby();
+    }
+
+    public void ExitToMainLobby()
+    {
+        Client.instance.Disconnect();
+        ShowMainLobby();
     }
 
     public void ExitGame()
@@ -139,6 +151,12 @@ public class LobbyUIManager : MonoBehaviour
         _info.roomNameText.text = _dto.roomName;
         _info.roomPlayersText.text = _dto.curPlayers + "/" + _dto.maxPlayers;
         _info.roomOwnerText.text = _dto.ownerName;
+        _info.isPrivate = _dto.isPrivate;
+        
+        if (_info.isPrivate)
+            _info.isPrivateText.text = "Private";
+        else
+            _info.isPrivateText.text = "";
 
         return _info;
     }
@@ -226,12 +244,18 @@ public class LobbyUIManager : MonoBehaviour
     }
     #endregion
 
-    #region JoinFastRoom
+    #region JoinRoom
 
     public void JoinFastRoom()
     {
-        ClientSend.JoinRoom(0);
+        ClientSend.JoinRoom(0, false, "Hello");
         return;
+    }
+
+    public void ShowPrivateRoomJoinPanel(bool _data, int _roomId)
+    {
+        privateRoomJoin.gameObject.SetActive(_data);
+        privateRoomJoin.roomid = _roomId;
     }
 
     #endregion
