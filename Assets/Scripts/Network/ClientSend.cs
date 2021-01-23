@@ -22,7 +22,7 @@ public class ClientSend : MonoBehaviour
         using (Packet _packet = new Packet((int)ClientPackets.welcomeReceived))
         {
             _packet.Write(Client.instance.myId);
-            _packet.Write("HongGilDong");
+            _packet.Write(Client.instance.steamName);
 
             SendTCPData(_packet);
         }

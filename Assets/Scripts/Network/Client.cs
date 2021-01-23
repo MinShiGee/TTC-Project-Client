@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
+using Steamworks;
 
 public enum ClientStatus
 {
@@ -15,7 +16,15 @@ public enum ClientStatus
 
 public class Client : MonoBehaviour
 {
+
+    [SerializeField]
+    private bool useSteamSdk = false;
+
     public static Client instance;
+
+    public CSteamID steamId;
+    public string steamName;
+
     public static int dataBufferSize = 4096;
 
     public string ip = "127.0.0.1";
@@ -44,11 +53,19 @@ public class Client : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        steamName = "HongGilDong";
+        if (useSteamSdk)
+            StartCoroutine(CheckEnableSteam());
+    }
+
     private void OnApplicationQuit()
     {
         Disconnect();
     }
 
+    #region TCP/UDP Network
     public void ConnectToServer()
     {
         tcp = new TCP();
@@ -276,7 +293,9 @@ public class Client : MonoBehaviour
             socket = null;
         }
     }
-    
+
+    #endregion
+
     private void InitializeClientData()
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
@@ -303,6 +322,27 @@ public class Client : MonoBehaviour
             udp.socket.Close();
 
             Debug.Log("Disconnected from server.");
+        }
+    }
+
+    IEnumerator CheckEnableSteam()
+    {
+        WaitForSeconds _wait = new WaitForSeconds(0.1f);
+        
+        if (!SteamManager.Initialized)
+        {
+            Application.Quit();
+        }
+        steamId = SteamUser.GetSteamID();
+        steamName = SteamFriends.GetFriendPersonaName(steamId);
+
+        while (true)
+        {
+            if (!SteamManager.Initialized)
+            {
+                Application.Quit();
+            }
+            yield return _wait;
         }
     }
 }
